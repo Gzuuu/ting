@@ -14,6 +14,7 @@ def process(path_file, instance):
     }
     instance.enqueue(conteudo_para_fila)
     sys.stdout.write(f"{conteudo_para_fila}\n")
+    return conteudo_para_fila
 
 
 def remove(instance):
@@ -28,3 +29,9 @@ def remove(instance):
 
 def file_metadata(instance, position):
     """Aqui irá sua implementação"""
+    try:
+        conteudo = instance.search(position)
+        sys.stdout.write(f"{conteudo}\n")
+        return conteudo
+    except IndexError:
+        sys.stderr.write('Posição inválida')
